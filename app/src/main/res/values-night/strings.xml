@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wait">Please Wait</string>
+    <string name="search">Search</string>
+    <string name="competition">Competition</string>
+    <string name="bulk">Bulk</string>
+    <string name="menu">Menu</string>
+    <string name="see_latest_trending_blogs_about_keywords">See latest trending blogs about keywords</string>
+    <string name="blog_post">Blog post</string>
+    <string name="loading_ad">Loading AD</string>
+    <string name="see_our_video_about_keyword_plans">See our video about keyword plans</string>
+    <string name="youtube_channel">Youtube channel</string>
+    <string name="see_our_website">See our website</string>
+    <string name="website">Website</string>
+    <string name="need_help">Need help?</string>
+    <string name="feedback">Feedback</string>
+    <string name="rate_us_how_we_work">Rate us how we work</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="share_this_fantastic_app_with_friends">Share this fantastic app with friends</string>
+    <string name="share_app">Share App</string>
+    <string name="enjoy_ads_free_version">Enjoy Ads free version</string>
+    <string name="premium_version">Premium version</string>
+    <string name="bulk_search">Bulk Search</string>
+    <string name="more">More</string>
+    <string name="keyword_planner">Keyword Planner</string>
+</resources>
