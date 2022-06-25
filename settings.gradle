@@ -1,9 +1,45 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://artifacts.applovin.com/android' }
+    }
+
+    resolutionStrategy {
+        eachPlugin {
+
+            switch (requested.id.id) {
+                case "dagger.hilt.android.plugin":
+                    useModule("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
+                    break
+
+                case "com.google.gms.google-services":
+                    useModule("com.google.gms:google-services:4.3.10")
+                    break
+                case "com.google.firebase.crashlytics":
+                    useModule("com.google.firebase:firebase-crashlytics-gradle:2.8.1")
+                    break
+                case "applovin-quality-service":
+                    useModule("com.applovin.quality:AppLovinQualityServiceGradlePlugin:+")
+                    break
+            }
+
+        }
+    }
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        mavenLocal()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://artifacts.applovin.com/android' }
     }
 }
 rootProject.name = "SeoStudio App"

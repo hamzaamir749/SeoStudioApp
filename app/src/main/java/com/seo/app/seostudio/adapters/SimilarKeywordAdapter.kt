@@ -3,8 +3,6 @@ package com.seo.app.seostudio.adapters
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,18 +11,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.seo.app.seostudio.R
-import com.seo.app.seostudio.ads.InterstitialHelper
-import com.seo.app.seostudio.fragments.SingleFragment
-import com.seo.app.seostudio.model.SimilarKeyword
+import com.seo.app.seostudio.models.SimilarKeyword
 import java.text.NumberFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
-class SimilarKeywordAdapter(val context: Context, val frag: Fragment) :
+class SimilarKeywordAdapter(val context: Context) :
     RecyclerView.Adapter<SimilarKeywordAdapter.myviewholder>() {
 
     var list: MutableList<SimilarKeyword> = ArrayList()
@@ -39,22 +33,19 @@ class SimilarKeywordAdapter(val context: Context, val frag: Fragment) :
             titile.text = data.keyword
             value.text = NumberFormat.getNumberInstance(Locale.US)
                 .format(data.search_volume.toDouble());
-            cardview.setOnClickListener {
-                if (frag is SingleFragment) {
-                    frag.openSimilar(data.keyword)
-                }
-            }
+            /* cardview.setOnClickListener {
+                 if (frag is SingleFragment) {
+                     frag.openSimilar(data.keyword)
+                 }
+             }*/
             copy.setOnClickListener {
-                frag.activity?.let {
-                    InterstitialHelper.loadAndShowInterstitial(
-                        it, true
-                    ) {
-                        val clipboard = context.getSystemService(AppCompatActivity.CLIPBOARD_SERVICE) as ClipboardManager
-                        val clip = ClipData.newPlainText("keyword", data.keyword)
-                        clipboard.setPrimaryClip(clip)
-                        Toast.makeText(context, "'${data.keyword}' Keyword copied", Toast.LENGTH_SHORT).show()
-                    }
-                }
+
+                val clipboard =
+                    context.getSystemService(AppCompatActivity.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData.newPlainText("keyword", data.keyword)
+                clipboard.setPrimaryClip(clip)
+                Toast.makeText(context, "'${data.keyword}' Keyword copied", Toast.LENGTH_SHORT)
+                    .show()
 
 
             }

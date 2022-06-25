@@ -1,10 +1,10 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
+    id 'dagger.hilt.android.plugin'
     id 'applovin-quality-service'
 }
 applovin {
@@ -20,24 +20,37 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         debug {
-            resValue "string", "admob_app_id", "ca-app-pub-3940256099942544~3347511713"
-            shrinkResources true
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue "string", "admob_app_id", "ca-app-pub-1077352878397226~8251134460"
+            resValue "string", "applovin_app_id", "T1r_WsLqmNLz_GhtOcpGoiCw-80PQkzNdWpUG90P7ihVTZkV95ZZ3vZKootArG4KShzuT1ic34v0QyUdAHg_dT"
+            resValue "string", "banner_ad_unit_id", "74bfa74ef4f23ee3"
+            resValue "string", "admob_interistitial", "0462427c9ce134ce"
+            resValue "string", "admob_rewarded_ad_id", "ffc752ca452a0368"
+            resValue "string", "admob_app_open_id", "ca-app-pub-3940256099942544/3419835294"
+            resValue "string", "KEYWORD_SEARCH_BASE_URL", "https://db2.keywordsur.fr/"
         }
+
         release {
-            resValue "string", "admob_app_id", "ca-app-pub-3534006675523302~6329992759"
-            shrinkResources true
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue "string", "admob_app_id", "ca-app-pub-3534006675523302~6329992759"
+            resValue "string", "applovin_app_id", "T1r_WsLqmNLz_GhtOcpGoiCw-80PQkzNdWpUG90P7ihVTZkV95ZZ3vZKootArG4KShzuT1ic34v0QyUdAHg_dT"
+            resValue "string", "banner_ad_unit_id", "74bfa74ef4f23ee3"
+            resValue "string", "admob_interistitial", "0462427c9ce134ce"
+            resValue "string", "admob_rewarded_ad_id", "ffc752ca452a0368"
+            resValue "string", "admob_app_open_id", "ca-app-pub-3534006675523302/6439099819"
+            resValue "string", "KEYWORD_SEARCH_BASE_URL", "https://db2.keywordsur.fr/"
         }
     }
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -53,44 +66,63 @@ android {
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.gms:play-services-ads-lite:20.6.0'
-    implementation 'androidx.lifecycle:lifecycle-process:2.4.1'
-    implementation 'com.google.firebase:firebase-crashlytics:18.2.10'
-    implementation 'com.google.firebase:firebase-analytics:21.0.0'
-    implementation 'com.applovin:applovin-sdk:+'
-    implementation 'com.applovin.mediation:google-adapter:+'
-    implementation 'com.applovin.mediation:facebook-adapter:+'
-    implementation 'com.applovin.mediation:mytarget-adapter:+'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
 
-    //  Navigation Component
-    var nav_version = "2.4.2"
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
-    // DI
-    implementation("com.google.dagger:hilt-android:2.38.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
-
-    // Handling all screen sizes
-    implementation 'com.intuit.sdp:sdp-android:1.0.6'
-
-    implementation 'com.hbb20:ccp:2.6.0'
     //kotlin coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
-    //retrofit
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:30.0.1')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-inappmessaging-display-ktx'
+
+
+    //Ads
+    implementation 'com.applovin:applovin-sdk:11.4.3'
+    implementation 'com.google.android.gms:play-services-ads:21.0.0'
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.4.1"
+
+
+    //Navigation Architecture Component
+    implementation 'androidx.navigation:navigation-runtime-ktx:2.4.2'
+    implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
+    implementation "androidx.navigation:navigation-ui-ktx:2.4.2"
+
+    //Dagger
+    implementation 'com.google.dagger:hilt-android:2.38.1'
+    kapt 'com.google.dagger:hilt-android-compiler:2.38.1'
+    kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2")
+    implementation 'androidx.activity:activity-ktx:1.4.0'
+    implementation 'androidx.fragment:fragment-ktx:1.4.1'
+
+    //REST
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+
+
+    //Country Code Picker
+    implementation 'com.hbb20:ccp:2.6.0'
+
+
+    implementation("com.android.support:multidex:1.0.3")
+
     //billing
     implementation 'com.android.billingclient:billing:4.1.0'
-    implementation 'com.google.ads.mediation:facebook:6.10.0.0'
-// FCM
-    implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'androidx.preference:preference-ktx:1.2.0'
-    implementation 'com.google.firebase:firebase-messaging:23.0.4'
+
 }

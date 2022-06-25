@@ -3,35 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/singleFragment">
+
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.seo.app.seostudio.fragments.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splashFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.seo.app.seostudio.fragments.MainFragment"
+        android:id="@+id/singleFragment"
+        android:name="com.seo.app.seostudio.ui.fragments.SingleFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_single" />
     <fragment
         android:id="@+id/bulkFragment"
-        android:name="com.seo.app.seostudio.fragments.BulkFragment"
+        android:name="com.seo.app.seostudio.ui.fragments.BulkFragment"
         android:label="fragment_bulk"
         tools:layout="@layout/fragment_bulk" />
     <fragment
-        android:id="@+id/moreFragment"
-        android:name="com.seo.app.seostudio.fragments.MoreFragment"
+        android:id="@+id/menuFragment"
+        android:name="com.seo.app.seostudio.ui.fragments.MenuFragment"
         android:label="fragment_more"
-        tools:layout="@layout/fragment_more" />
-    <fragment
-        android:id="@+id/singleFragment"
-        android:name="com.seo.app.seostudio.fragments.SingleFragment"
-        android:label="fragment_single"
-        tools:layout="@layout/fragment_single" />
+        tools:layout="@layout/fragment_menu" />
+
 </navigation>

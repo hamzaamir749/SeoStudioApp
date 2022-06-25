@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/SimilarItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:layout_marginStart="@dimen/_5sdp"
     android:layout_marginTop="@dimen/_10sdp"
     android:layout_marginEnd="@dimen/_5sdp"
     android:layout_marginBottom="@dimen/_15sdp"
-    app:cardElevation="0dp"
-    app:rippleColor="@android:color/transparent">
+    app:cardBackgroundColor="@color/backgroundFragment"
+    app:cardElevation="0dp">
 
     <View
         android:id="@+id/view"
@@ -32,42 +30,40 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="@dimen/_10sdp"
-
-        android:ellipsize="end"
         android:layout_marginTop="@dimen/_7sdp"
         android:layout_marginBottom="@dimen/_7sdp"
-        android:fontFamily="@font/lexend"
+        android:ellipsize="end"
         android:maxLines="2"
-        android:text="love the nights"
+        android:text=""
+        android:textColor="@color/textColor"
         android:textSize="@dimen/_12sdp" />
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:id="@+id/copyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|end"
-        android:layout_marginEnd="@dimen/_85sdp"
         android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginEnd="@dimen/_85sdp"
         android:layout_marginBottom="@dimen/_7sdp"
-        android:src="@drawable/copy" />
+        android:src="@drawable/ic_copy" />
 
     <TextView
         android:id="@+id/SimilarKeywordvalue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|end"
-        android:layout_marginTop="@dimen/_7sdp"
-        android:layout_marginBottom="@dimen/_7sdp"
         android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_7sdp"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_7sdp"
         android:background="@drawable/searchview"
         android:backgroundTint="#FBB11E"
         android:paddingHorizontal="@dimen/_7sdp"
         android:paddingVertical="@dimen/_1sdp"
-        android:text="34,5462"
-
+        android:text=""
         android:textColor="@color/white"
-        android:textSize="@dimen/_11sdp"
-        />
+        android:textSize="@dimen/_11sdp" />
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>

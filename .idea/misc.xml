@@ -23,7 +23,24 @@
         <entry key="..\:/Users/raziu/Downloads/Compressed/wetransfer_seostudio-app-5-21-22-zip_2022-06-11_0906/SeoStudio-App-5-21-22/seoStudioApp/app/src/main/res/layout/admob_orignal_native.xml" value="0.25" />
         <entry key="..\:/Users/raziu/Downloads/Compressed/wetransfer_seostudio-app-5-21-22-zip_2022-06-11_0906/SeoStudio-App-5-21-22/seoStudioApp/app/src/main/res/layout/admob_small_native.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/raziu/Downloads/Compressed/wetransfer_seostudio-app-5-21-22-zip_2022-06-11_0906/SeoStudio-App-5-21-22/seoStudioApp/app/src/main/res/layout/fragment_more.xml" value="0.34479166666666666" />
+        <entry key="app/src/main/res/drawable-v24/bg_loading_dialog.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/ic_copy.xml" value="0.1305" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/bulk_keyword_data.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/bulk_similar_keywor.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/fragment_bulk.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.17135416666666667" />
         <entry key="app/src/main/res/layout/fragment_more.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/fragment_single.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/layout_app_open_loading.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/loading_dialog.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/similar_item_layout.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/menu/menu_bottom.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1305" />
       </map>
     </option>
   </component>

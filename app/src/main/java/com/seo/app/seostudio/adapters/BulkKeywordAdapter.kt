@@ -7,32 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.card.MaterialCardView
+
+import com.seo.app.seostudio.utils.RecyclerviewCallbacks
+import com.seo.app.seostudio.utils.roundOffDecimal
 import com.seo.app.seostudio.R
-import com.seo.app.seostudio.ads.InterstitialHelper
 import com.seo.app.seostudio.databinding.BulkSimilarKeyworBinding
-import com.seo.app.seostudio.databinding.SimilarItemLayoutBinding
-import com.seo.app.seostudio.fragments.SingleFragment
-import com.seo.app.seostudio.model.KeywordItem
-import com.seo.app.seostudio.model.SimilarKeyword
-import com.seo.app.seostudio.utils.utils
-import java.lang.Exception
+import com.seo.app.seostudio.models.KeywordItem
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
-class BulkKeywordAdapter(val context: Context, val frag: Fragment) :
+class BulkKeywordAdapter(val context: Context) :
     RecyclerView.Adapter<BulkKeywordAdapter.myviewholder>() {
 
     var list: MutableList<KeywordItem> = ArrayList()
+    var callback: RecyclerviewCallbacks<String>? = null
 
     inner class myviewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun setdata(data: KeywordItem, p: Int) {
@@ -45,51 +39,21 @@ class BulkKeywordAdapter(val context: Context, val frag: Fragment) :
             var simiarLayout = itemView.findViewById<LinearLayout>(R.id.BulkSimilarkeywordLayout)
 
             keyWordNameTextview.text = "Keyword data related to '${data.keyword}'"
-            try {
-                search.text = if (data.search_volume != "0" || data.search_volume != "") {
-                    NumberFormat.getNumberInstance(Locale.US).format(data.search_volume.toDouble());
+            search.text = NumberFormat.getNumberInstance(Locale.US)
+                .format(data.search_volume.toDouble());
+            bingsearch.text = if (data.bing_search_volume != "0") {
+                NumberFormat.getNumberInstance(Locale.US)
+                    .format(data.bing_search_volume.toDouble());
+            } else {
+                "0"
+            }
+            competition.text = roundOffDecimal(data.competition.toDouble())
+            cpc.text =
+                if (data.cpc.isEmpty()) {
+                    "0$"
                 } else {
-                    "0"
+                    DecimalFormat("#.##").format(data.cpc.toDouble()) + "$"
                 }
-            } catch (E: Exception) {
-                search.text = "0"
-            } catch (E: java.lang.Exception) {
-                search.text = "0"
-            }
-            try {
-                bingsearch.text = if (data.bing_search_volume != "0" || data.bing_search_volume != "") {
-                    NumberFormat.getNumberInstance(Locale.US).format(data.bing_search_volume.toDouble());
-                } else {
-                    "0"
-                }
-            } catch (E: Exception) {
-                bingsearch.text = "0"
-            } catch (E: java.lang.Exception) {
-                bingsearch.text = "0"
-            }
-            try {
-                competition.text = if (data.competition != "" || data.competition != "") {
-                    utils.roundOffDecimal(data.competition.toDouble())
-                } else {
-                    "0"
-                }
-            } catch (E: Exception) {
-                competition.text = "0"
-            } catch (E: java.lang.Exception) {
-                competition.text = "0"
-            }
-            try {
-                cpc.text =
-                    if (data.cpc.isEmpty() || data.cpc == "") {
-                        "0$"
-                    } else {
-                        DecimalFormat("#.##").format(data.cpc.toDouble()) + "$"
-                    }
-            } catch (E: Exception) {
-                cpc.text = "0"
-            } catch (E: java.lang.Exception) {
-                cpc.text = "0"
-            }
 
 
             //set similarwords
@@ -101,21 +65,20 @@ class BulkKeywordAdapter(val context: Context, val frag: Fragment) :
                     .format(it.search_volume.toDouble());
 
                 binding.copyButton.setOnClickListener {
-                    frag.activity?.let {
-                        InterstitialHelper.loadAndShowInterstitial(
-                            it, true
-                        ) {
-                            val clipboard = context.getSystemService(AppCompatActivity.CLIPBOARD_SERVICE) as ClipboardManager
-                            val clip = ClipData.newPlainText("keyword", keyword)
-                            clipboard.setPrimaryClip(clip)
-                            Toast.makeText(context, "'${data.keyword}' Keyword copied", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+                    callback?.onItemClick()
+                    val clipboard =
+                        context.getSystemService(AppCompatActivity.CLIPBOARD_SERVICE) as ClipboardManager
+                    val clip = ClipData.newPlainText("keyword", keyword)
+                    clipboard.setPrimaryClip(clip)
+                    Toast.makeText(context, "'${data.keyword}' Keyword copied", Toast.LENGTH_SHORT)
+                        .show()
                 }
+
+
                 simiarLayout.addView(binding.root)
             }
-
         }
+
     }
 
     fun setDataList(list: MutableList<KeywordItem>) {
@@ -155,4 +118,8 @@ class BulkKeywordAdapter(val context: Context, val frag: Fragment) :
         view.startAnimation(anim)
     }
 
+    fun setOnClick(click: RecyclerviewCallbacks<String>) {
+        callback = click
+    }
 }
+
