@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/countrySpinner" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/BulkRecyclerView"
+        android:id="@+id/bulkRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:nestedScrollingEnabled="true"
@@ -76,25 +76,13 @@
         tools:listitem="@layout/bulk_keyword_data" />
 
 
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="@dimen/_30sdp"
-        android:layout_height="@dimen/_30sdp"
-        android:indeterminateTint="@color/baseColor"
-        android:outlineAmbientShadowColor="@color/baseColor"
-        android:outlineSpotShadowColor="@color/baseColor"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchButton" />
-
 
     <FrameLayout
         android:id="@+id/bannerAdLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_80sdp"
         android:layout_gravity="bottom"
+        app:layout_constraintTop_toBottomOf="@id/bulkRecyclerView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

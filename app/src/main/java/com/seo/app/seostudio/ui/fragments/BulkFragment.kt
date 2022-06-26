@@ -35,7 +35,7 @@ class BulkFragment : Fragment() {
     lateinit var adapterBulkKeyword: BulkKeywordAdapter
 
 
-    private val KeywordBulkViewModel: KeywordBulkViewModel by viewModels()
+    private val keywordBulkViewModel: KeywordBulkViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,7 +63,7 @@ class BulkFragment : Fragment() {
                         list?.forEach {
                             keyword = "${keyword.trim()}%22${it.trim()}%22,"
                         }
-                        KeywordBulkViewModel.getKeywordBulk(
+                        keywordBulkViewModel.getKeywordBulk(
                             "https://db2.keywordsur.fr/keyword_surfer_keywords?country=${binding.countrySpinner.selectedCountryNameCode}&keywords=[${
                                 keyword.substringBeforeLast(
                                     ","
@@ -85,7 +85,7 @@ class BulkFragment : Fragment() {
                     list?.forEach {
                         keyword = "${keyword.trim()}%22${it.trim()}%22,"
                     }
-                    KeywordBulkViewModel.getKeywordBulk(
+                    keywordBulkViewModel.getKeywordBulk(
                         "https://db2.keywordsur.fr/keyword_surfer_keywords?country=${binding.countrySpinner.selectedCountryNameCode}&keywords=[${
                             keyword.substringBeforeLast(
                                 ","
@@ -106,7 +106,7 @@ class BulkFragment : Fragment() {
     }
 
     private fun initViews() {
-        binding.BulkRecyclerView.apply {
+        binding.bulkRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapterBulkKeyword
         }
@@ -128,7 +128,7 @@ class BulkFragment : Fragment() {
 
     private fun handleApiResponse() {
         lifecycleScope.launchWhenCreated {
-            KeywordBulkViewModel.keywordBulk.collect {
+            keywordBulkViewModel.keywordBulk.collect {
                 when (it) {
                     is FlowState.Loading -> loadingDialog.showDialog(requireActivity())
                     is FlowState.Failure -> {

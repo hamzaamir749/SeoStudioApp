@@ -78,15 +78,7 @@ object AppModule {
     @Singleton
     fun provideKeywordBulkRepository(apiService: ApiService) = KeywordBulkRepository(apiService)
 
-    @Provides
-    @Singleton
-    fun provideBulkKeyboardAdapter(@ApplicationContext context: Context) =
-        BulkKeywordAdapter(context)
 
-    @Provides
-    @Singleton
-    fun provideSimilarKeywordAdapter(@ApplicationContext context: Context) =
-        SimilarKeywordAdapter(context)
 
     @Provides
     @Singleton

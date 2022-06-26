@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/countrySpinner" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/BulkRecyclerView"
+        android:id="@+id/singleRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:nestedScrollingEnabled="true"
@@ -76,8 +76,6 @@
         tools:listitem="@layout/bulk_keyword_data" />
 
 
-
-
     <FrameLayout
         android:id="@+id/bannerAdLayout"
         android:layout_width="match_parent"
@@ -85,7 +83,8 @@
         android:layout_gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/singleRecyclerView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

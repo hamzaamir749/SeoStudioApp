@@ -83,7 +83,7 @@ class SingleFragment : Fragment() {
     }
 
     private fun initViews() {
-        binding.BulkRecyclerView.apply {
+        binding.singleRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapterBulkKeyword
         }
